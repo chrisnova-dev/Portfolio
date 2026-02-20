@@ -1,1 +1,30 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+/* ===== Smooth Infinite Scroll ===== */
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.skills-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 20s linear infinite;
+}
+
+/* Pause animation on hover
+.skills-track:hover {
+  animation-play-state: paused;
+} */
+
+/* Mobile friendly speed */
+@media (max-width: 768px) {
+  .skills-track {
+    animation: scrollLeft 30s linear infinite;
+  }
+}

@@ -14,7 +14,7 @@ const Hero = () => {
         </a>
       </div>
       <div className="flex-1 w-full max-w-md shadow-xl rounded-2xl overflow-hidden">
-        <img src="/profile.jpg" alt="Profile" />
+        <img src="public/profile.jpg" alt="Profile" />
       </div>
     </header>
   );

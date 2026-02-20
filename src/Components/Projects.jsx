@@ -1,8 +1,8 @@
 const Projects = () => {
   const list = [
-    { title: "Interactive Buttons", desc: "Custom UI components", img:"/Button.png" },
-    { title: "React Blog Site", desc: "Built with React", img: "/Blog-site.png" },
-    { title: "Crypto Token Page", desc: "Web3 Landing Page", img: "/crypto.png" }
+    { title: "Interactive Buttons", desc: "Custom UI components", img:"/button.jpeg" },
+    { title: "React Blog Site", desc: "Built with React", img: "/blog.jpeg" },
+    { title: "Crypto Token Page", desc: "Web3 Landing Page", img: "/crypto.jpeg" }
   ];
   return (
     <section id="projects" className="py-20 bg-gray-50/50 border-t">

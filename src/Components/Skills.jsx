@@ -24,7 +24,7 @@ const Skills = () => {
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-8 text-slate-900">My Skills</h2>
         <div className="flex flex-wrap gap-4 skills-track">
-          {skillList.map((skill, index) => (
+          {skillList.map((skill, index)  => (
             <div 
               key={index} 
               className="flex items-center gap-3 px-5 py-3 bg-white border border-gray-300 rounded-md hover:scale-105 transition-transform"
