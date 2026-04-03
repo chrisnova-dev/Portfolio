@@ -1,7 +1,7 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
-import { slideUp } from "../animation";
+
 
 const Hero = () => {
   const scrollToContact = (e) => {
@@ -20,7 +20,7 @@ const Hero = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      {/* VIDEO FIRST */}
+      {/* VIDEO*/}
       <div className="flex-1 w-full max-w-xl order-1 md:order-2">
         <div className="aspect-[18/10] rounded-[1.5rem] overflow-hidden  shadow-[0_0_40px_rgba(250,204,21,0.2)]">
           <video
@@ -30,7 +30,7 @@ const Hero = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="public/gojo.mp4" type="video/mp4" />
+            <source src="./gojo.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -68,7 +68,7 @@ const Hero = () => {
           <a
             href="#contact"
             onClick={scrollToContact}
-            className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all uppercase text-sm tracking-wide"
+            className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all text-sm tracking-wide"
           >
             Hire Me
           </a>

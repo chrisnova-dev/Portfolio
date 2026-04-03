@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
+import Contact from "./Components/Contact";
 import Skills from "./components/Skills";
 // import Projects from "./components/Projects";
 import Posts from "./components/Posts";
-import Contact from "./components/Contact";
+import About from "./Components/About";
 
 import AOS from "aos";
 import "aos/dist/aos.css";

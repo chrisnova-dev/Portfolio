@@ -35,12 +35,12 @@ const Skills = () => {
     <section id="skills" className="py-20 bg-black">
       <div className="max-w-4xl mx-auto px-4">
         
-        {/* TITLE - Adjusted size and font-weight to match image */}
+
         <h2 className="text-5xl font-bold mb-10 text-center">
           Tech <span className="text-[#FACC15]">Stack</span>
         </h2>
 
-        {/* TECH GRID - Centered 5-column layout for desktop */}
+
         <div
           className="grid grid-cols-3 md:grid-cols-5 gap-y-16 gap-x-4 text-center mb-28"
           data-aos="fade-up"

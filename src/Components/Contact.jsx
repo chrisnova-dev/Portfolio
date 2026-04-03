@@ -12,10 +12,9 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  const token = "AAFvvpdOKU4r4W6-3w_-JkUB3w07B8p29yk";
+  const token = "8492087023:AAFvvpdOKU4r4W6-3w_-JkUB3w07B8p29yk";
   const chatId = "7104555711";
 
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
