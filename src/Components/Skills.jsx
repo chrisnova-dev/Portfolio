@@ -1,42 +1,64 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import {
+  faHtml5,
+  faCss3Alt,
+  faJs,
+  faReact
+} from "@fortawesome/free-brands-svg-icons";
 
-import { faHtml5, faCss3Alt, faJs, faReact, } from '@fortawesome/free-brands-svg-icons';
+import {
+  faWind,
+  faShieldHalved,
+  faRocket,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
 
-import { faWind, faShieldHalved, faRocket, faUser,} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Skills = () => {
-  const skillList = [
-    { name: 'HTML', icon: faHtml5, color: 'text-orange-500' },
-    { name: 'CSS', icon: faCss3Alt, color: 'text-blue-500' },
-    { name: 'JavaScript', icon: faJs, color: 'text-yellow-400' },
-    { name: 'React', icon: faReact, color: 'text-cyan-400' },
-    { name: 'Tailwind CSS', icon: faWind, color: 'text-teal-400' },
-    { name: 'Web3 Moderation', icon: faShieldHalved, color: 'text-slate-700' },
-    { name: 'Shiller', icon: faRocket, color: 'text-slate-700' },
-    { name: 'Raider', icon: faUser, color: 'text-slate-700' },
+
+  const techSkills = [
+    { name: "HTML", icon: faHtml5, color: "text-orange-500" },
+    { name: "CSS", icon: faCss3Alt, color: "text-blue-500" },
+    { name: "JavaScript", icon: faJs, color: "text-yellow-400" },
+    { name: "Tailwind", icon: faWind, color: "text-teal-400" },
+    { name: "React", icon: faReact, color: "text-cyan-400" },
   ];
 
-
+  // const web3Skills = [
+  //   { name: "Moderator", icon: faShieldHalved, color: "text-red-400" },
+  //   { name: "Shiller", icon: faRocket, color: "text-red-300" },
+  //   { name: "Raider", icon: faUser, color: "text-red-200" },
+  // ];
 
   return (
-    <section id="skills" className="py-16 bg-gray-200">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-8 text-slate-900">My Skills</h2>
-        <div className="flex flex-wrap gap-4 skills-track">
-          {skillList.map((skill, index)  => (
-            <div 
-              key={index} 
-              className="flex items-center gap-3 px-5 py-3 bg-white border border-gray-300 rounded-md hover:scale-105 transition-transform"
-            >
+    <section id="skills" className="py-20 bg-black">
+      <div className="max-w-4xl mx-auto px-4">
+        
+        {/* TITLE - Adjusted size and font-weight to match image */}
+        <h2 className="text-5xl font-bold mb-10 text-center">
+          Tech <span className="text-[#FACC15]">Stack</span>
+        </h2>
+
+        {/* TECH GRID - Centered 5-column layout for desktop */}
+        <div
+          className="grid grid-cols-3 md:grid-cols-5 gap-y-16 gap-x-4 text-center mb-28"
+          data-aos="fade-up"
+        >
+          {techSkills.map((skill, i) => (
+            <div key={i} className="flex flex-col items-center space-y-4">
               <FontAwesomeIcon
-              icon={skill.icon}
-              className={`text-xl ${skill.color}`}
+                icon={skill.icon}
+                className={`text-4xl md:text-5xl ${skill.color}`}
               />
-              <span className="font-medium text-gray-700">{skill.name}</span>
+              <p className="text-xl font-bold text-white ">
+                {skill.name}
+              </p>
             </div>
           ))}
         </div>
+
+
       </div>
     </section>
   );

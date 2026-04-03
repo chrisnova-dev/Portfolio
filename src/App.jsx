@@ -1,26 +1,47 @@
-import React from "react";
-import Navbar from "./Components/Navbar"
-import Hero from "./Components/Hero";
-import About from "./Components/About"
-import Skills from "./Components/Skills";
-import Projects from "./Components/Projects";
-import Contact from "./Components/Contact";
-import Footer from "./Components/footer";
+import React, { useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+// import Projects from "./components/Projects";
+import Posts from "./components/Posts";
+import Contact from "./components/Contact";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-function App() {
+const App = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  }, []);
+
   return (
-    <>
+    <div className="bg-[#0a0a0a] min-h-screen text-white selection:bg-[#FACC15]/30">
+
       <Navbar />
+
       <Hero />
+
       <About />
+
       <Skills />
-      <Projects />
+
+      {/* <Projects /> */}
+
+      <Posts />
+
       <Contact />
-      <Footer />
-    </>
+
+      <footer className="py-12 text-center text-gray-600 text-sm border-t border-white/5">
+        © {new Date().getFullYear()} Chris Nova. All rights reserved.
+      </footer>
+
+    </div>
   );
-}
+};
 
 export default App;
-

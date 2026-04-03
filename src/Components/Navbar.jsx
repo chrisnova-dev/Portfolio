@@ -1,29 +1,64 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCube } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faUser,
+  faChartLine,
+  faEnvelope,
+  faBriefcase
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
+  const [active, setActive] = useState("hero");
+
+  const NAV_ITEMS = [
+    { id: "home", icon: faHouse },
+    { id: "about", icon: faUser },
+    { id: "skills", icon: faChartLine },
+    { id: "posts", icon: faBriefcase },
+    { id: "contact", icon: faEnvelope }
+  ];
+
+  const handleScroll = (id) => {
+    setActive(id);
+
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  };
+
   return (
-    
-    <nav className="sticky top-0 z-50 bg-white-100 backdrop-blur-md flex justify-center py-6 border-b border-gray-100 shadow-xl">
-      <ul className="flex gap-4 md:gap-8 text-gray-600 font-medium">
-        <li>
-          <a href="#home" className="hover:text-[#0047BB] border-b-2 border-transparent hover:border-[#0047BB] pb-1 transition-all">Home</a>
-        </li>
-        <li>
-          <a href="#about" className="hover:text-[#0047BB] border-b-2 border-transparent hover:border-[#0047BB] pb-1 transition-all">About</a>
-        </li>
-        <li>
-          <a href="#skills" className="hover:text-[#0047BB] border-b-2 border-transparent hover:border-[#0047BB] pb-1 transition-all">Skills</a>
-        </li>
-        <li>
-          <a href="#projects" className="hover:text-[#0047BB] border-b-2 border-transparent hover:border-[#0047BB] pb-1 transition-all">Projects</a>
-        </li>
-        <li>
-          <a href="#contact" className="hover:text-[#0047BB] border-b-2 border-transparent hover:border-[#0047BB] pb-1 transition-all">Contact</a>
-        </li>
-      </ul>
-    </nav>
+    <div className="fixed bottom-8 left-0 w-full flex justify-center z-[100]">
+      <nav className="flex items-center gap-3 px-5 py-3 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl">
+
+        {NAV_ITEMS.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => handleScroll(item.id)}
+            className="relative p-4 rounded-full group transition-all duration-300"
+          >
+            {active === item.id && (
+              <div className="absolute inset-0 bg-[#FACC15] rounded-full shadow-[0_0_25px_rgba(250,204,21,0.7)] transition-all duration-300" />
+            )}
+
+            <FontAwesomeIcon
+              icon={item.icon}
+              className={`relative z-10 text-xl ${
+                active === item.id
+                  ? "text-black"
+                  : "text-gray-500 group-hover:text-white"
+              }`}
+            />
+
+          </button>
+        ))}
+      </nav>
+    </div>
   );
 };
 
