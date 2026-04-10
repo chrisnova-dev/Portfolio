@@ -4,7 +4,7 @@ const Posts = () => {
 
   return (
 
-    <section id="posts" className="py-32 px-6" data-aos="fade-up">
+    <section id="posts" className="py-32 px-6 bg-black min-h-screen" data-aos="fade-up">
 
       <div className="max-w-4xl mx-auto text-center">
 

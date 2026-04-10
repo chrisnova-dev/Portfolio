@@ -22,7 +22,7 @@ export const About = () => {
   };
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-24 px-6 bg-black min-h-screen">
       <motion.div 
         className="max-w-4xl mx-auto text-center"
         initial="hidden"

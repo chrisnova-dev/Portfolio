@@ -119,7 +119,7 @@ ${form.message}
   return (
     <section id="contact" className="py-32 px-6 bg-black text-white items-center overflow-hidden">
       <motion.div 
-        className="max-w-4xl flex-col mx-auto grid grid-cols-1 md:grid-cols-2 gap-12"
+        className="max-w-6xl flex-col mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
