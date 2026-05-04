@@ -5,50 +5,56 @@ const workItems = [
     id: 1,
     title: "Yepe Coin CTO Admin",
     category: "Community Management",
-    image: "/public/mod.jpg",
+    image: "/pow.jpg",
   },
   {
     id: 2,
     title: "Active Raid Coordination",
     category: "Web3 Moderation",
-    image: "/public/Raider.jpg",
+    image: "/Raider.jpg",
   },
   {
     id: 3,
     title: "community modernization",
     category: "Frontend Development",
-    image: "/public/mod.jpg",
+    image: "/mod.jpg",
   },
   {
     id: 4,
     title: "community growth",
     category: "Community Growth",
-    image: "/public/shiller.jpg",
+    image: "/shiller.jpg",
   },
   {
     id: 5,
     title: "community engagement",
     category: "Community Management",
-    image: "/public/mod (2).jpg",
+    image: "/mod-2.jpg",
   },
   {
     id: 6,
     title: "community engagement",
     category: "Community Management",
-    image: "/public/Admin (2).jpg",
+    image: "/moderator.jpg",
   },
   {
     id: 7,
     title: "community engagement",
     category: "Community Management",
-    image: "/public/Admin.jpg",
+    image: "/Admin-1.jpg",
   },
   {
     id: 8,
     title: "community engagement",
     category: "Community Management",
-    image: "/public/Admin (3).jpg",
-  }
+    image: "/Admin-2.jpg",
+  },
+  {
+    id: 9,
+    title: "community engagement",
+    category: "Community Management",
+    image: "/Admin-3.jpg",
+  },
 ];
 
 export default function ProofOfWork() {
