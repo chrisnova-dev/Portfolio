@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-// Configuration
 const CACHE_KEY = 'twitter_feed_cache';
 const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 const HANDLE = 'ChrisNova01';
 // PASTE YOUR RSS.APP URL HERE
 const RSS_FEED_URL = "https://rss.app/feeds/v1.1/SASlI6C2hBsqkEFz.json"; 
 
-// ─── Helpers ───────────────────────────────────────────────────────────────
+
 
 function timeAgo(ts) {
   const diff = Date.now() - ts;
@@ -30,8 +29,6 @@ function expiresIn(postTime) {
     pct,
   };
 }
-
-// ─── Sub-components ────────────────────────────────────────────────────────
 
 const TweetCard = ({ post }) => {
   const exp = expiresIn(post.time);

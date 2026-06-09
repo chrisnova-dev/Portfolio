@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <motion.header
       id="home"
-      className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-24 py-20 gap-12 bg-black text-white"
+      className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-24 py-20 gap-12 text-white"
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
@@ -70,7 +70,7 @@ const Hero = () => {
             onClick={scrollToContact}
             className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all text-sm tracking-wide"
           >
-            Hire Me
+            Get in Touch
           </a>
         </div>
       </div>

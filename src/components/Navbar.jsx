@@ -1,65 +1,145 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHouse,
-  faUser,
-  faChartLine,
-  faEnvelope,
-  faBriefcase
+  faHouse, faUser, faChartLine,
+  faEnvelope, faBriefcase, faStar, faTag
 } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
-  const [active, setActive] = useState("hero");
+const NAV_ITEMS = [
+  { id: "home",         icon: faHouse,    label: "Home"    },
+  { id: "about",        icon: faUser,     label: "About"   },
+  { id: "skills",       icon: faChartLine,label: "Skills"  },
+  { id: "pricing",      icon: faTag,      label: "Pricing" },
+  { id: "testimonials", icon: faStar,     label: "Reviews" },
+  { id: "contact",      icon: faEnvelope, label: "Contact" },
+];
 
-  const NAV_ITEMS = [
-    { id: "home", icon: faHouse },
-    { id: "about", icon: faUser },
-    { id: "skills", icon: faChartLine },
-    { id: "posts", icon: faBriefcase },
-    { id: "contact", icon: faEnvelope }
-  ];
+export default function Navbar() {
+  const [active,  setActive]  = useState("home");
+  const [hovered, setHovered] = useState(null);
+  const [pill,    setPill]    = useState({ left: 0, width: 0 });
+  const itemRefs = useRef({});
 
-  const handleScroll = (id) => {
+  // Auto-detect section while scrolling
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && NAV_ITEMS.find((n) => n.id === e.target.id)) {
+            setActive(e.target.id);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Slide pill to active button
+  useEffect(() => {
+    const btn = itemRefs.current[active];
+    if (btn) setPill({ left: btn.offsetLeft, width: btn.offsetWidth });
+  }, [active]);
+
+  const scrollTo = (id) => {
     setActive(id);
-
-    const section = document.getElementById(id);
-
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="fixed bottom-8 left-0 w-full flex justify-center z-[100]">
-      <nav className="flex items-center gap-3 px-5 py-3 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl">
+    <div style={{
+      position: "fixed", bottom: "28px",
+      left: 0, width: "100%",
+      display: "flex", justifyContent: "center",
+      zIndex: 200,
+    }}>
+      <nav style={{
+        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        gap: "0px",
+        padding: "5px",
+        borderRadius: "999px",
+        background: "rgba(4,4,4,0.8)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        border: "1px solid rgba(250,204,21,0.12)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(250,204,21,0.04) inset",
+      }}>
 
-        {NAV_ITEMS.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => handleScroll(item.id)}
-            className="relative p-4 rounded-full group transition-all duration-300"
-          >
-            {active === item.id && (
-              <div className="absolute inset-0 bg-[#FACC15] rounded-full shadow-[0_0_25px_rgba(250,204,21,0.7)] transition-all duration-300" />
-            )}
+        {/* Sliding pill */}
+        <div style={{
+          position: "absolute",
+          top: "5px",
+          left: pill.left,
+          width: pill.width,
+          height: "calc(100% - 10px)",
+          borderRadius: "999px",
+          background: "#FACC15",
+          boxShadow: "0 0 16px rgba(250,204,21,0.5), 0 0 32px rgba(250,204,21,0.15)",
+          transition: "left 0.38s cubic-bezier(0.4,0,0.2,1), width 0.38s cubic-bezier(0.4,0,0.2,1)",
+          zIndex: 0,
+        }} />
 
-            <FontAwesomeIcon
-              icon={item.icon}
-              className={`relative z-10 text-xl ${
-                active === item.id
-                  ? "text-black"
-                  : "text-gray-500 group-hover:text-white"
-              }`}
-            />
+        {NAV_ITEMS.map((item) => {
+          const isActive  = active  === item.id;
+          const isHovered = hovered === item.id && !isActive;
 
-          </button>
-        ))}
+          return (
+            <button
+              key={item.id}
+              ref={(el) => (itemRefs.current[item.id] = el)}
+              onClick={() => scrollTo(item.id)}
+              onMouseEnter={() => setHovered(item.id)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                position: "relative",
+                zIndex: 1,
+                display: "flex",
+                alignItems: "center",
+                gap: isActive ? "6px" : "0px",
+                // Tighter padding — fixes oversized pill
+                padding: isActive ? "9px 14px" : "9px 12px",
+                borderRadius: "999px",
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                transition: "padding 0.35s cubic-bezier(0.4,0,0.2,1), gap 0.35s ease",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={item.icon}
+                style={{
+                  fontSize: "14px",
+                  color: isActive ? "#000" : isHovered ? "#FACC15" : "#555",
+                  transition: "color 0.25s ease",
+                  flexShrink: 0,
+                }}
+              />
+
+              {/* Label — only on active item */}
+              <span style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                color: "#000",
+                letterSpacing: "0.03em",
+                fontFamily: "'Syne', sans-serif",
+                maxWidth: isActive ? "50px" : "0px",
+                opacity: isActive ? 1 : 0,
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                transition: "max-width 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease",
+              }}>
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
       </nav>
     </div>
   );
-};
-
-export default Navbar;
+}

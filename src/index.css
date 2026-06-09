@@ -1,17 +1,5 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800;900&display=swap');
 
-global {
-  font-family: 'Outfit', sans-serif;
-}
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0a0a0a;
-  color: white;
-}
 
-html{
-  scroll-behavior: smooth;
-}
